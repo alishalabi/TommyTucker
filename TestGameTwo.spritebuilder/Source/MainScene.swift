@@ -37,7 +37,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     
     
     // Declare scroll speed
-    var scrollingRate: CGFloat = 200
+    var scrollingRate: CGFloat = 160
     
     // Declare didLoadFrom
     func didLoadFromCCB() {
@@ -69,7 +69,10 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     
     // Implement collision handler method with coin
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, champion: CCNode!, score: CCNode!) -> Bool {
-        score.removeFromParent()
+        if score != nil && score.parent != nil {
+             score.removeFromParent()
+        }
+        
         scoreTotal++
         scoreTally.string = String(scoreTotal)
         return true
@@ -78,7 +81,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     // Apply touch impulse
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
         if (gameOver == false) {
-        champion.physicsBody.applyImpulse(ccp(0, 800))
+            champion.physicsBody.applyImpulse(ccp(0, 800))
         }
     }
     
@@ -93,7 +96,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         enemy.setupRandomPosition()
         scrollingPhysicsNode.addChild(enemy)
         enemies.append(enemy)
-    
+        
     }
     
     // Apply coin generation
@@ -154,6 +157,35 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
                 mountain.position = ccp(mountain.position.x + mountain.contentSize.width * 2, mountain.position.y)
             }
             
+        }
+        // Spawn endless coins
+        for coin in coins.reverse() {
+            let coinWorldPosition = scrollingPhysicsNode.convertToWorldSpace(coin.position)
+            let coinScreenPosition = convertToNodeSpace(coinWorldPosition)
+            
+            // obstacle moved past left side of screen?
+            if coinScreenPosition.x < (-coin.contentSize.width) {
+                coin.removeFromParent()
+                coins.removeAtIndex(find(coins, coin)!)
+                
+                // for each removed obstacle, add a new one
+                spawnCoin()
+            }
+        }
+        
+        // Spawn endless enemies
+        for enemy in enemies.reverse() {
+            let enemyWorldPosition = scrollingPhysicsNode.convertToWorldSpace(enemy.position)
+            let enemyScreenPosition = convertToNodeSpace(enemyWorldPosition)
+            
+            // obstacle moved past left side of screen?
+            if enemyScreenPosition.x < (-enemy.contentSize.width) {
+                enemy.removeFromParent()
+                enemies.removeAtIndex(find(enemies, enemy)!)
+                
+                // for each removed obstacle, add a new one
+                spawnEnemy()
+            }
         }
     }
 }
