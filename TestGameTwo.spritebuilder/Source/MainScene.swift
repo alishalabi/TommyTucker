@@ -7,12 +7,10 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     weak var scrollingPhysicsNode: CCPhysicsNode!
     
     // Declare Doc Root Variables for endless scrolling
-    weak var lowerFloor1: CCSprite!
-    weak var lowerFloor2: CCSprite!
+    weak var lowerFloor: CCSprite!
     var lowerFloors = [CCSprite]()
     
-    weak var upperFloor1: CCSprite!
-    weak var upperFloor2: CCSprite!
+    weak var upperFloor: CCSprite!
     var upperFloors = [CCSprite]()
     
     weak var mountain1: CCSprite!
@@ -26,7 +24,16 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     // Declare enemy array
     var enemies: [CCNode] = []
     let firstEnemyPosition: CGFloat = 300
-    let distanceBetweenEnemies: CGFloat = 200
+    let distanceBetweenEnemies: CGFloat = 800
+    
+    // Declare coin array
+    var coins : [CCNode] = []
+    let firstCoinPosition : CGFloat = 140
+    let distanceBetweenCoins : CGFloat = 100
+    
+    // Declare score array
+    var scoreTotal: NSInteger = 0
+    weak var scoreTally: CCLabelTTF!
     
     
     // Declare scroll speed
@@ -37,10 +44,6 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         userInteractionEnabled = true
         
         // Append arrays for endless scrolling
-        lowerFloors.append(lowerFloor1)
-        lowerFloors.append(lowerFloor2)
-        upperFloors.append(upperFloor1)
-        upperFloors.append(upperFloor2)
         mountains.append(mountain1)
         mountains.append(mountain2)
         
@@ -51,32 +54,60 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         for i in 0...2 {
             spawnEnemy()
         }
+        
+        // Automaticall spawn 10 coins
+        for i in 0...9 {
+            spawnCoin()
+        }
     }
     
-    // Implement collision handler method, make restart visible
+    // Implement collision handler method with enemy, make restart visible
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, champion: CCNode!, gameOver: CCNode!) -> Bool {
         endGame()
         return true
     }
     
+    // Implement collision handler method with coin
+    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, champion: CCNode!, score: CCNode!) -> Bool {
+        score.removeFromParent()
+        scoreTotal++
+        scoreTally.string = String(scoreTotal)
+        return true
+    }
+    
     // Apply touch impulse
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
+        if (gameOver == false) {
         champion.physicsBody.applyImpulse(ccp(0, 800))
+        }
     }
     
     // Apply enemy generation
-    func spawnEnemy () {
+    func spawnEnemy() {
         var lastEnemyPos = firstEnemyPosition
         if enemies.count > 0 {
             lastEnemyPos = enemies.last!.position.x
         }
-        
         let enemy = CCBReader.load("Enemy") as! Enemy
         enemy.position = ccp(lastEnemyPos + distanceBetweenEnemies, 0)
         enemy.setupRandomPosition()
         scrollingPhysicsNode.addChild(enemy)
         enemies.append(enemy)
     
+    }
+    
+    // Apply coin generation
+    func spawnCoin() {
+        var lastCoinPos = firstCoinPosition
+        if coins.count > 0 {
+            lastCoinPos = coins.last!.position.x
+        }
+        let coin = CCBReader.load("Coin") as! Coin
+        coin.position = ccp(lastCoinPos + distanceBetweenCoins, 0)
+        coin.setupRandomPosition()
+        scrollingPhysicsNode.addChild(coin)
+        coins.append(coin)
+        
     }
     
     // Apply restart method
@@ -110,15 +141,10 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         // Update scrolling node position
         scrollingPhysicsNode.position = ccp(scrollingPhysicsNode.position.x - scrollingRate * CGFloat(delta), scrollingPhysicsNode.position.y)
         
-//        mountainNode.position = ccp(mountainNode.position.x - scrollingRate * CGFloat(delta), mountainNode.position.y)
-        
-        
         // Update upper & lower boundary positions (scrolling effect)
-        upperFloor1.position.x = champion.position.x
-        lowerFloor1.position.x = champion.position.x
+        upperFloor.position.x = champion.position.x
+        lowerFloor.position.x = champion.position.x
         
-        
-        //
         
         // Append mountains
         for mountain in mountains {
