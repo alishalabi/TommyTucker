@@ -1,11 +1,10 @@
 import Foundation
 
-class MainScene: CCNode {
+class MainScene: CCNode, CCPhysicsCollisionDelegate {
     
     // Declare Doc Root Variables for basic scrolling
     weak var champion: CCSprite!
     weak var scrollingPhysicsNode: CCPhysicsNode!
-//    weak var mountainNode: CCNode!
     
     // Declare Doc Root Variables for endless scrolling
     weak var lowerFloor1: CCSprite!
@@ -20,14 +19,18 @@ class MainScene: CCNode {
     weak var mountain2: CCSprite!
     var mountains = [CCSprite]()
     
+    // Declare Doc Root Variables for restart
+    weak var restartButton : CCButton!
+    var gameOver = false
+    
     // Declare enemy array
     var enemies: [CCNode] = []
-    let firstEnemyPosition: CGFloat = 500
-    let distanceBetweenEnemies = 300
+    let firstEnemyPosition: CGFloat = 300
+    let distanceBetweenEnemies: CGFloat = 200
     
     
     // Declare scroll speed
-    var scrollingRate: CGFloat = 700
+    var scrollingRate: CGFloat = 200
     
     // Declare didLoadFrom
     func didLoadFromCCB() {
@@ -40,6 +43,20 @@ class MainScene: CCNode {
         upperFloors.append(upperFloor2)
         mountains.append(mountain1)
         mountains.append(mountain2)
+        
+        // Assign collision delegate class
+        scrollingPhysicsNode.collisionDelegate = self
+        
+        // Automatically spawn 3 obstacles
+        for i in 0...2 {
+            spawnEnemy()
+        }
+    }
+    
+    // Implement collision handler method, make restart visible
+    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, champion: CCNode!, gameOver: CCNode!) -> Bool {
+        endGame()
+        return true
     }
     
     // Apply touch impulse
@@ -53,6 +70,36 @@ class MainScene: CCNode {
         if enemies.count > 0 {
             lastEnemyPos = enemies.last!.position.x
         }
+        
+        let enemy = CCBReader.load("Enemy") as! Enemy
+        enemy.position = ccp(lastEnemyPos + distanceBetweenEnemies, 0)
+        enemy.setupRandomPosition()
+        scrollingPhysicsNode.addChild(enemy)
+        enemies.append(enemy)
+    
+    }
+    
+    // Apply restart method
+    func restart() {
+        let openingScene = CCBReader.loadAsScene("MainScene")
+        CCDirector.sharedDirector().presentScene(openingScene)
+    }
+    
+    // Trigger restart method
+    func endGame() {
+        if (gameOver == false) {
+            gameOver = true
+            restartButton.visible = true
+            scrollingRate = 0
+            
+            // Emergency termination
+            champion.stopAllActions()
+            
+            let move = CCActionEaseBounceOut(action: CCActionMoveBy(duration: 0.2, position: ccp(0, 4)))
+            let moveBack = CCActionEaseBounceOut(action: move.reverse())
+            let shakeSequence = CCActionSequence(array: [move, moveBack])
+            runAction(shakeSequence)
+        }
     }
     
     // Update function
@@ -62,35 +109,16 @@ class MainScene: CCNode {
         
         // Update scrolling node position
         scrollingPhysicsNode.position = ccp(scrollingPhysicsNode.position.x - scrollingRate * CGFloat(delta), scrollingPhysicsNode.position.y)
+        
 //        mountainNode.position = ccp(mountainNode.position.x - scrollingRate * CGFloat(delta), mountainNode.position.y)
         
-        // Automatically spawn 3 obstacles
-        for i in 0...2 {
-            spawnEnemy()
-        }
         
-        // Append lower floors
-//        for floor in lowerFloors {
-//            let floorWorldPosition = scrollingPhysicsNode.convertToWorldSpace(floor.position)
-//            let floorScreenPosition = convertToNodeSpace(floorWorldPosition)
-//            if floorScreenPosition.x <= (-floor.contentSize.width) {
-//                floor.position = ccp(floor.position.x + floor.contentSize.width * 2, floor.position.y)
-//            }
-//        }
-//        
-//        
-//        // Append upper floors
-//        for floor in upperFloors {
-//            let floorWorldPosition = scrollingPhysicsNode.convertToWorldSpace(floor.position)
-//            let floorScreenPosition = convertToNodeSpace(floorWorldPosition)
-//            if floorScreenPosition.x <= (-floor.contentSize.width) {
-//                floor.position = ccp(floor.position.x + floor.contentSize.width * 2, floor.position.y)
-//            }
-//        }
-        
+        // Update upper & lower boundary positions (scrolling effect)
         upperFloor1.position.x = champion.position.x
         lowerFloor1.position.x = champion.position.x
         
+        
+        //
         
         // Append mountains
         for mountain in mountains {
