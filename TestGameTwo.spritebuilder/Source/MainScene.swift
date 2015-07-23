@@ -35,12 +35,15 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     var scoreTotal: NSInteger = 0
     weak var scoreTally: CCLabelTTF!
     
+    var isTouching = false
+    
     
     // Declare scroll speed
     var scrollingRate: CGFloat = 160
     
     // Declare didLoadFrom
     func didLoadFromCCB() {
+        // Allow user interaction
         userInteractionEnabled = true
         
         // Append arrays for endless scrolling
@@ -69,21 +72,35 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     
     // Implement collision handler method with coin
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, champion: CCNode!, score: CCNode!) -> Bool {
+        
+        // Remove coin (included: debug feature)
         if score != nil && score.parent != nil {
              score.removeFromParent()
         }
         
+        // Increase score by 1, show new score
         scoreTotal++
         scoreTally.string = String(scoreTotal)
         return true
     }
     
-    // Apply touch impulse
+    // Apply touch vector handler
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
         if (gameOver == false) {
-            champion.physicsBody.applyImpulse(ccp(0, 800))
+            isTouching = true
         }
     }
+    
+    
+    // Remove touch vector
+    override func touchEnded(touch: CCTouch!, withEvent event: CCTouchEvent!) {
+        isTouching = false
+    }
+    override func touchCancelled(touch: CCTouch!, withEvent event: CCTouchEvent!) {
+        isTouching = false
+    }
+
+    
     
     // Apply enemy generation
     func spawnEnemy() {
@@ -158,6 +175,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
             }
             
         }
+        
         // Spawn endless coins
         for coin in coins.reverse() {
             let coinWorldPosition = scrollingPhysicsNode.convertToWorldSpace(coin.position)
@@ -186,6 +204,11 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
                 // for each removed obstacle, add a new one
                 spawnEnemy()
             }
+        }
+        
+        // While touching screen, apply steady impulse to champion  (no change in x, positive change in y direction)
+        if isTouching {
+            champion.physicsBody.applyImpulse(ccp(0, 200))
         }
     }
 }
