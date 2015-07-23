@@ -189,7 +189,7 @@
 								<key>value</key>
 								<array>
 									<real>1440</real>
-									<real>197.72320556640625</real>
+									<real>163.1632080078125</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -469,8 +469,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>-40</real>
+									<real>3.4560275077819824</real>
+									<real>-112.57595825195312</real>
 									<integer>1</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -642,8 +642,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>-40</real>
+									<real>-19.008016586303711</real>
+									<real>-126.4000244140625</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -717,6 +717,8 @@
 								<array/>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>UUID</key>
@@ -878,8 +880,6 @@
 						<real>0.5</real>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -1248,7 +1248,7 @@
 						<key>value</key>
 						<array>
 							<real>517.902099609375</real>
-							<real>248.10511779785156</real>
+							<real>277.48110961914062</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1581,7 +1581,7 @@
 		</dict>
 	</array>
 	<key>stageBorder</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>stageColor</key>
 	<integer>0</integer>
 </dict>

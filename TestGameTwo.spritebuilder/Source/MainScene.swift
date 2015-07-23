@@ -35,6 +35,8 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     var scoreTotal: NSInteger = 0
     weak var scoreTally: CCLabelTTF!
     
+    
+    // Declare touch handler Boolean
     var isTouching = false
     
     
@@ -70,6 +72,12 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         return true
     }
     
+//    // Implement collision with Boundary Box
+//    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, champion: CCNode!, scrollingPhysicsNode: CCNode!) -> Bool {
+//        isTouching == false
+//        return true
+//    }
+    
     // Implement collision handler method with coin
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, champion: CCNode!, score: CCNode!) -> Bool {
         
@@ -91,7 +99,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         }
     }
     
-    
+
     // Remove touch vector
     override func touchEnded(touch: CCTouch!, withEvent event: CCTouchEvent!) {
         isTouching = false
@@ -155,6 +163,13 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     
     // Update function
     override func update(delta: CCTime) {
+
+
+        // Create maximimum Y boundary
+        let newYPosition = Float(champion.position.y)
+        let boundingY = Float(scrollingPhysicsNode.boundingBox().height - 20)
+        champion.position.y = CGFloat(clampf(newYPosition, Float(20), boundingY))
+        
         // Update character position
         champion.position = ccp(champion.position.x + scrollingRate * CGFloat(delta), champion.position.y)
         
@@ -210,5 +225,8 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         if isTouching {
             champion.physicsBody.applyImpulse(ccp(0, 200))
         }
+        
+        // Clamp upper and lower boundaries (y axis)
+        
     }
 }

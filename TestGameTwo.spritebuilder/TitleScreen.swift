@@ -8,10 +8,16 @@
 
 import Foundation
 
-class TitleScreen: CCNode, CCPhysicsCollisionDelegate {
+class TitleScreen: CCNode {
     
     func newGame() {
-        println("play button pressed")
+        let mainScene = CCBReader.loadAsScene("MainScene")
+        CCDirector.sharedDirector().presentScene(mainScene)
+    }
+    
+    func continueGame() {
+        let mainScene = CCBReader.loadAsScene("MainScene")
+        CCDirector.sharedDirector().presentScene(mainScene)
     }
 
 }
