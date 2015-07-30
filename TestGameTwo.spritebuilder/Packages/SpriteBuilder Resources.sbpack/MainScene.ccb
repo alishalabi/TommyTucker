@@ -750,8 +750,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>34.000003814697266</real>
-									<real>204</real>
+									<real>71.000007629394531</real>
+									<real>208</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -779,6 +779,8 @@
 								<string>Hero.ccb</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -935,8 +937,6 @@
 						<real>0.5</real>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>

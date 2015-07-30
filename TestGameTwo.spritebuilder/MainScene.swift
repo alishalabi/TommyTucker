@@ -81,8 +81,20 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     // Implement collision handler method with coin
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, champion: CCNode!, score: CCNode!) -> Bool {
         
-        // Remove coin (included: debug feature)
+        // Remove coin (included: debug feature) and add particle effect
         if score != nil && score.parent != nil {
+            // Load particle effect for contact with coin
+            let explosion = CCBReader.load("CoinContact") as! CCParticleSystem
+            
+            // Remove particle effect once finished
+            explosion.autoRemoveOnFinish = true;
+            
+            // Place effect on coin location
+            explosion.position = score.position;
+            
+            self.addChild(explosion)
+            
+            // Remove coin
             score.removeFromParent()
         }
         
