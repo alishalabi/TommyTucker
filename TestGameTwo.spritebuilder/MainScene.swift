@@ -72,18 +72,18 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         return true
     }
     
-//    // Implement collision with Boundary Box
-//    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, champion: CCNode!, scrollingPhysicsNode: CCNode!) -> Bool {
-//        isTouching == false
-//        return true
-//    }
+    //    // Implement collision with Boundary Box
+    //    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, champion: CCNode!, scrollingPhysicsNode: CCNode!) -> Bool {
+    //        isTouching == false
+    //        return true
+    //    }
     
     // Implement collision handler method with coin
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, champion: CCNode!, score: CCNode!) -> Bool {
         
         // Remove coin (included: debug feature)
         if score != nil && score.parent != nil {
-             score.removeFromParent()
+            score.removeFromParent()
         }
         
         // Increase score by 1, show new score
@@ -99,7 +99,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         }
     }
     
-
+    
     // Remove touch vector
     override func touchEnded(touch: CCTouch!, withEvent event: CCTouchEvent!) {
         isTouching = false
@@ -107,7 +107,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     override func touchCancelled(touch: CCTouch!, withEvent event: CCTouchEvent!) {
         isTouching = false
     }
-
+    
     
     
     // Apply enemy generation
@@ -163,15 +163,22 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     
     // Update function
     override func update(delta: CCTime) {
-
-
+        
+        
         // Create maximimum Y boundary
         let newYPosition = Float(champion.position.y)
         let boundingY = Float(scrollingPhysicsNode.boundingBox().height - 20)
-        champion.position.y = CGFloat(clampf(newYPosition, Float(20), boundingY))
+        //        let y = CGFloat(clampf(newYPosition, Float(20), boundingY))
         
         // Update character position
         champion.position = ccp(champion.position.x + scrollingRate * CGFloat(delta), champion.position.y)
+        
+        champion.physicsBody.velocity.x = 0
+        
+        // While touching screen, apply steady impulse to champion  (no change in x, positive change in y direction)
+        if isTouching {
+            champion.physicsBody.applyImpulse(ccp(0, 50))
+        }
         
         // Update scrolling node position
         scrollingPhysicsNode.position = ccp(scrollingPhysicsNode.position.x - scrollingRate * CGFloat(delta), scrollingPhysicsNode.position.y)
@@ -179,6 +186,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         // Update upper & lower boundary positions (scrolling effect)
         upperFloor.position.x = champion.position.x
         lowerFloor.position.x = champion.position.x
+        
         
         
         // Append mountains
@@ -220,13 +228,6 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
                 spawnEnemy()
             }
         }
-        
-        // While touching screen, apply steady impulse to champion  (no change in x, positive change in y direction)
-        if isTouching {
-            champion.physicsBody.applyImpulse(ccp(0, 200))
-        }
-        
-        // Clamp upper and lower boundaries (y axis)
         
     }
 }

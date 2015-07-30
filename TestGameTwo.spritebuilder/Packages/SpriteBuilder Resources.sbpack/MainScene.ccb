@@ -469,8 +469,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>3.4560275077819824</real>
-									<real>-112.57595825195312</real>
+									<real>3.4560546875</real>
+									<real>-72.831939697265625</real>
 									<integer>1</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -642,8 +642,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-19.008016586303711</real>
-									<real>-126.4000244140625</real>
+									<real>-22.464057922363281</real>
+									<real>-71.104019165039062</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -717,8 +717,6 @@
 								<array/>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>UUID</key>
@@ -766,19 +764,11 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.40000000596046448</real>
-									<real>0.40000000596046448</real>
+									<real>0.10000000149011612</real>
+									<real>0.10000000149011612</real>
 									<false/>
 									<integer>0</integer>
 								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>rotation</string>
-								<key>type</key>
-								<string>Degrees</string>
-								<key>value</key>
-								<real>180</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -799,6 +789,71 @@
 				<string>scrollingPhysicsNode</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
+				<key>physicsBody</key>
+				<dict>
+					<key>affectedByGravity</key>
+					<true/>
+					<key>allowsRotation</key>
+					<true/>
+					<key>bodyShape</key>
+					<integer>0</integer>
+					<key>collisionCategories</key>
+					<array/>
+					<key>collisionMask</key>
+					<array/>
+					<key>collisionType</key>
+					<string></string>
+					<key>cornerRadius</key>
+					<real>0.0</real>
+					<key>density</key>
+					<real>1</real>
+					<key>dynamic</key>
+					<false/>
+					<key>elasticity</key>
+					<real>0.30000001192092896</real>
+					<key>friction</key>
+					<real>0.30000001192092896</real>
+					<key>points</key>
+					<array>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+						</array>
+						<array>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+						<array>
+							<real>1</real>
+							<real>1</real>
+						</array>
+						<array>
+							<real>1</real>
+							<real>0.0</real>
+						</array>
+					</array>
+					<key>polygons</key>
+					<array>
+						<array>
+							<array>
+								<real>1</real>
+								<real>0.0</real>
+							</array>
+							<array>
+								<real>1</real>
+								<real>1</real>
+							</array>
+							<array>
+								<real>0.0</real>
+								<real>1</real>
+							</array>
+							<array>
+								<real>0.0</real>
+								<real>0.0</real>
+							</array>
+						</array>
+					</array>
+				</dict>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -868,7 +923,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-200</real>
+							<real>-100</real>
 						</array>
 					</dict>
 					<dict>
@@ -880,6 +935,8 @@
 						<real>0.5</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>

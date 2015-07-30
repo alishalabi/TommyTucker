@@ -15,9 +15,5 @@ class TitleScreen: CCNode {
         CCDirector.sharedDirector().presentScene(mainScene)
     }
     
-    func continueGame() {
-        let mainScene = CCBReader.loadAsScene("MainScene")
-        CCDirector.sharedDirector().presentScene(mainScene)
-    }
 
 }

@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		5B121030197484FA004C1E1D /* TestGameTwoActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B12102F197484FA004C1E1D /* TestGameTwoActivity.m */; };
 		5B121038197487F2004C1E1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B737893E1807617C0076A88C /* AppDelegate.m */; };
-		7A046D7919E84ED5004C4763 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A046D7519E84C36004C4763 /* MainScene.swift */; };
-		7A10CE5619F32FB0001673C3 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A046D7519E84C36004C4763 /* MainScene.swift */; };
 		7A40360419DDEE84007B6E8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40360319DDEE84007B6E8F /* main.m */; };
 		7A4036EB19DE3F8E007B6E8F /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8392007918EE8E3300B6C429 /* GLKit.framework */; };
 		7A4036EC19DE3F90007B6E8F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3117B978D7009739AE /* QuartzCore.framework */; };
@@ -96,6 +94,7 @@
 		FA818E0A1B597DF800F8105B /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA818E091B597DF800F8105B /* Enemy.swift */; };
 		FA818E101B599BA200F8105B /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA818E0F1B599BA200F8105B /* Coin.swift */; };
 		FAE2E1321B618D790093A6DE /* TitleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2E1311B618D790093A6DE /* TitleScreen.swift */; };
+		FAE2E1421B61AA710093A6DE /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2E1411B61AA710093A6DE /* MainScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,7 +160,6 @@
 		5B121033197485FE004C1E1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Platforms/Android/Info.plist; sourceTree = "<group>"; };
 		5B121034197485FE004C1E1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Platforms/iOS/Info.plist; sourceTree = "<group>"; };
 		5BA4619E1974C88900785744 /* AndroidManifest.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = AndroidManifest.xml; path = Platforms/Android/AndroidManifest.xml; sourceTree = "<group>"; };
-		7A046D7519E84C36004C4763 /* MainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainScene.swift; path = Source/MainScene.swift; sourceTree = "<group>"; };
 		7A4035FF19DDEE84007B6E8F /* TestGameTwo Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TestGameTwo Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A40360219DDEE84007B6E8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Platforms/Mac/Info.plist; sourceTree = "<group>"; };
 		7A40360319DDEE84007B6E8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Source/Platforms/Mac/main.m; sourceTree = "<group>"; };
@@ -217,6 +215,7 @@
 		FA818E091B597DF800F8105B /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		FA818E0F1B599BA200F8105B /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		FAE2E1311B618D790093A6DE /* TitleScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScreen.swift; sourceTree = "<group>"; };
+		FAE2E1411B61AA710093A6DE /* MainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -441,8 +440,8 @@
 			isa = PBXGroup;
 			children = (
 				7A40362019DDEF0D007B6E8F /* Platforms */,
-				7A046D7519E84C36004C4763 /* MainScene.swift */,
 				FAE2E1311B618D790093A6DE /* TitleScreen.swift */,
+				FAE2E1411B61AA710093A6DE /* MainScene.swift */,
 				FA818E0F1B599BA200F8105B /* Coin.swift */,
 				FA818E091B597DF800F8105B /* Enemy.swift */,
 				D352B48019EC608A00829775 /* MetalShaders */,
@@ -803,7 +802,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A10CE5619F32FB0001673C3 /* MainScene.swift in Sources */,
 				7A40360419DDEE84007B6E8F /* main.m in Sources */,
 				7A59498E19E3941300F65F90 /* AppDelegate.m in Sources */,
 			);
@@ -824,7 +822,7 @@
 				FA818E0A1B597DF800F8105B /* Enemy.swift in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				FAE2E1321B618D790093A6DE /* TitleScreen.swift in Sources */,
-				7A046D7919E84ED5004C4763 /* MainScene.swift in Sources */,
+				FAE2E1421B61AA710093A6DE /* MainScene.swift in Sources */,
 				FA818E101B599BA200F8105B /* Coin.swift in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 			);
