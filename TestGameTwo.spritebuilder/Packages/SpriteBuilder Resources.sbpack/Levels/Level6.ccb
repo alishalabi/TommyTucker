@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>3</integer>
+	<integer>4</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -41,7 +41,7 @@
 		<array>
 			<dict>
 				<key>UUID</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>baseClass</key>
 				<string>CCSprite</string>
 				<key>children</key>
@@ -71,8 +71,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>254.19622802734375</real>
-							<real>-139.62648010253906</real>
+							<real>437.5</real>
+							<real>-15.040008544921875</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -110,7 +110,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Hong Kong skyline.png</string>
+							<string>Level Backgrounds/Hong Kong skyline.png</string>
 						</array>
 					</dict>
 					<dict>

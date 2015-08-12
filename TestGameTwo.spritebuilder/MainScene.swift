@@ -84,26 +84,24 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
             levelNode.addChild(level1)
         } else if LevelData.currentLevel == 2 {
             let level2 = CCBReader.load("Levels/Level2")
-            println("level 2")
             levelNode.addChild(level2)
         } else if LevelData.currentLevel == 3 {
-            let level2 = CCBReader.load("Levels/Level3")
-            levelNode.addChild(level2)
+            let level3 = CCBReader.load("Levels/Level3")
+            levelNode.addChild(level3)
         } else if LevelData.currentLevel == 4 {
-            let level2 = CCBReader.load("Levels/Level4")
-            levelNode.addChild(level2)
+            let level4 = CCBReader.load("Levels/Level4")
+            levelNode.addChild(level4)
         } else if LevelData.currentLevel == 5 {
-            let level2 = CCBReader.load("Levels/Level5")
-            levelNode.addChild(level2)
+            let level5 = CCBReader.load("Levels/Level5")
+            levelNode.addChild(level5)
         } else if LevelData.currentLevel == 6 {
-            let level2 = CCBReader.load("Levels/Level6")
-            levelNode.addChild(level2)
+            let level6 = CCBReader.load("Levels/Level6")
+            levelNode.addChild(level6)
         } else if LevelData.currentLevel == 7 {
-            let level2 = CCBReader.load("Levels/Level7")
-            levelNode.addChild(level2)
+            let level7 = CCBReader.load("Levels/Level7")
+            levelNode.addChild(level7)
         } else {
-                println("this failed")
-                
+                println("this failed")                
             }
     }
 
@@ -126,11 +124,6 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         return true
     }
     
-    //    // Implement collision with Boundary Box
-    //    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, champion: CCNode!, scrollingPhysicsNode: CCNode!) -> Bool {
-    //        isTouching == false
-    //        return true
-    //    }
     
     // Implement collision handler method with coin
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, champion: CCNode!, score: CCNode!) -> Bool {

@@ -21,4 +21,25 @@ struct LevelData {
             NSUserDefaults.standardUserDefaults().setInteger(newValue, forKey: "currentLevel")
         }
     }
+    
+    static var currentScore: Int {
+        get {
+            let curScore = NSUserDefaults.standardUserDefaults().integerForKey("currentScore")
+            return curScore
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setInteger(newValue, forKey: "currentScore")
+        }
+    }
+    
+    static var currentLives: Int {
+        get {
+        let curLives = NSUserDefaults.standardUserDefaults().integerForKey("currentLives")
+        return curLives
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setInteger(newValue, forKey: "currentLives")
+        }
+    }
+    
 }

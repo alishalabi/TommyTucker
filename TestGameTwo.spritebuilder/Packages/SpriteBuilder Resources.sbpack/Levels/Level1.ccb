@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>6</integer>
+	<integer>8</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -41,7 +41,7 @@
 		<array>
 			<dict>
 				<key>UUID</key>
-				<integer>5</integer>
+				<integer>7</integer>
 				<key>baseClass</key>
 				<string>CCSprite</string>
 				<key>children</key>
@@ -71,8 +71,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>675</real>
-							<real>-221.800048828125</real>
+							<real>456.55340576171875</real>
+							<real>-19.999990463256836</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -96,8 +96,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>1.2174757719039917</real>
+							<real>1.2174757719039917</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -110,7 +110,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>San Francisco skyline new.png</string>
+							<string>Level Backgrounds/San Francisco skyline new copy.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -146,8 +146,6 @@
 						<array/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>3</integer>
+	<integer>6</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -41,7 +41,7 @@
 		<array>
 			<dict>
 				<key>UUID</key>
-				<integer>2</integer>
+				<integer>5</integer>
 				<key>baseClass</key>
 				<string>CCSprite</string>
 				<key>children</key>
@@ -71,8 +71,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>1041.5</real>
-							<real>-395.50582885742188</real>
+							<real>425.53610229492188</real>
+							<real>0.0</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -110,7 +110,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Panama City skyline.png</string>
+							<string>Level Backgrounds/Panama City skyline.png</string>
 						</array>
 					</dict>
 					<dict>

@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>2</integer>
+	<integer>3</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -41,7 +41,7 @@
 		<array>
 			<dict>
 				<key>UUID</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>baseClass</key>
 				<string>CCSprite</string>
 				<key>children</key>
@@ -71,8 +71,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>468.15542602539062</real>
-							<real>-227.06770324707031</real>
+							<real>1350</real>
+							<real>-512</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -110,7 +110,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Paris skyline.png</string>
+							<string>Level Backgrounds/Paris skyline.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -146,8 +146,6 @@
 						<array/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
