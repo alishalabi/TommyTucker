@@ -45,7 +45,6 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     
     // Declare member variable for Level Node & declare initial level
     weak var levelNode : CCNode!
-    var currentLevel: NSInteger = 1
     
     
     
@@ -80,42 +79,44 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     
     // Load the proper level
     func loadLevel() {
-        if currentLevel == 1 {
+        if LevelData.currentLevel == 1 {
             let level1 = CCBReader.load("Levels/Level1")
             levelNode.addChild(level1)
-        } else if currentLevel == 2 {
+        } else if LevelData.currentLevel == 2 {
             let level2 = CCBReader.load("Levels/Level2")
+            println("level 2")
             levelNode.addChild(level2)
-        } else if currentLevel == 3 {
+        } else if LevelData.currentLevel == 3 {
             let level2 = CCBReader.load("Levels/Level3")
             levelNode.addChild(level2)
-        } else if currentLevel == 4 {
+        } else if LevelData.currentLevel == 4 {
             let level2 = CCBReader.load("Levels/Level4")
             levelNode.addChild(level2)
-        } else if currentLevel == 5 {
+        } else if LevelData.currentLevel == 5 {
             let level2 = CCBReader.load("Levels/Level5")
             levelNode.addChild(level2)
-        } else if currentLevel == 6 {
+        } else if LevelData.currentLevel == 6 {
             let level2 = CCBReader.load("Levels/Level6")
             levelNode.addChild(level2)
-        } else if currentLevel == 7 {
+        } else if LevelData.currentLevel == 7 {
             let level2 = CCBReader.load("Levels/Level7")
             levelNode.addChild(level2)
         } else {
                 println("this failed")
                 
             }
+    }
 
 
-//    // Change level as score increases
-//    func changeLevel() {
-//        if scoreTotal >= 10 {
-//            currentLevel++
-//            let transitionScene = CCBReader.loadAsScene("TransitionScene")
-//            CCDirector.sharedDirector().presentScene(transitionScene)
-//            
-//        }
-//    }
+    // Change level as score increases
+    func changeLevel() {
+        if scoreTotal >= 10 {
+            LevelData.currentLevel++
+            let transitionScene = CCBReader.loadAsScene("TransitionScene")
+            CCDirector.sharedDirector().presentScene(transitionScene)
+            
+        }
+    }
     
     
     
@@ -149,11 +150,12 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
             
             // Remove coin
             score.removeFromParent()
+            
+            // Increase score by 1, show new score
+            scoreTotal++
+            scoreTally.string = String(scoreTotal)
         }
         
-        // Increase score by 1, show new score
-        scoreTotal++
-        scoreTally.string = String(scoreTotal)
         return true
     }
     

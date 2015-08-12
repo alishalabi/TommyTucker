@@ -94,6 +94,7 @@
 		FA818E0A1B597DF800F8105B /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA818E091B597DF800F8105B /* Enemy.swift */; };
 		FA818E101B599BA200F8105B /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA818E0F1B599BA200F8105B /* Coin.swift */; };
 		FAD708491B7BC1FE00C5F237 /* TransitionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD708481B7BC1FE00C5F237 /* TransitionScreen.swift */; };
+		FAD7084D1B7BCB3500C5F237 /* LevelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD7084C1B7BCB3500C5F237 /* LevelData.swift */; };
 		FAE2E1321B618D790093A6DE /* TitleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2E1311B618D790093A6DE /* TitleScreen.swift */; };
 		FAE2E1421B61AA710093A6DE /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2E1411B61AA710093A6DE /* MainScene.swift */; };
 /* End PBXBuildFile section */
@@ -216,6 +217,7 @@
 		FA818E091B597DF800F8105B /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		FA818E0F1B599BA200F8105B /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		FAD708481B7BC1FE00C5F237 /* TransitionScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionScreen.swift; sourceTree = "<group>"; };
+		FAD7084C1B7BCB3500C5F237 /* LevelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelData.swift; sourceTree = "<group>"; };
 		FAE2E1311B618D790093A6DE /* TitleScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScreen.swift; sourceTree = "<group>"; };
 		FAE2E1411B61AA710093A6DE /* MainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -444,6 +446,7 @@
 				7A40362019DDEF0D007B6E8F /* Platforms */,
 				FAE2E1311B618D790093A6DE /* TitleScreen.swift */,
 				FAE2E1411B61AA710093A6DE /* MainScene.swift */,
+				FAD7084C1B7BCB3500C5F237 /* LevelData.swift */,
 				FAD708481B7BC1FE00C5F237 /* TransitionScreen.swift */,
 				FA818E0F1B599BA200F8105B /* Coin.swift */,
 				FA818E091B597DF800F8105B /* Enemy.swift */,
@@ -826,6 +829,7 @@
 				FA818E0A1B597DF800F8105B /* Enemy.swift in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				FAE2E1321B618D790093A6DE /* TitleScreen.swift in Sources */,
+				FAD7084D1B7BCB3500C5F237 /* LevelData.swift in Sources */,
 				FAE2E1421B61AA710093A6DE /* MainScene.swift in Sources */,
 				FA818E101B599BA200F8105B /* Coin.swift in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,

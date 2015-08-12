@@ -78,6 +78,13 @@
 			<key>previewFolderHidden</key>
 			<true/>
 		</dict>
+		<key>Athens skyline.png</key>
+		<dict>
+			<key>isDirty</key>
+			<true/>
+			<key>scaleFrom</key>
+			<integer>4</integer>
+		</dict>
 		<key>Paris skyline.png</key>
 		<dict>
 			<key>scaleFrom</key>
