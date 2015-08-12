@@ -63,7 +63,7 @@
 	<key>publishToZipFile</key>
 	<false/>
 	<key>resourceAutoScaleFactor</key>
-	<integer>2</integer>
+	<integer>4</integer>
 	<key>resourcePaths</key>
 	<array>
 		<dict>
@@ -77,6 +77,16 @@
 		<dict>
 			<key>previewFolderHidden</key>
 			<true/>
+		</dict>
+		<key>Paris skyline.png</key>
+		<dict>
+			<key>scaleFrom</key>
+			<integer>4</integer>
+		</dict>
+		<key>San Francisco skyline new.png</key>
+		<dict>
+			<key>scaleFrom</key>
+			<integer>4</integer>
 		</dict>
 		<key>Sprites</key>
 		<dict/>

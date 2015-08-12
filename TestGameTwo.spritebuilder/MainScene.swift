@@ -13,9 +13,9 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     weak var upperFloor: CCSprite!
     var upperFloors = [CCSprite]()
     
-    weak var mountain1: CCSprite!
-    weak var mountain2: CCSprite!
-    var mountains = [CCSprite]()
+//    weak var mountain1: CCSprite!
+//    weak var mountain2: CCSprite!
+//    var mountains = [CCSprite]()
     
     // Declare Doc Root Variables for restart
     weak var restartButton : CCButton!
@@ -40,17 +40,23 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     var isTouching = false
     
     
-    // Declare scroll speed
+    // Declare scroll speed (champion)
     var scrollingRate: CGFloat = 160
+    
+    // Declare member variable for Level Node & declare initial level
+    weak var levelNode : CCNode!
+    var currentLevel: NSInteger = 1
+    
+    
     
     // Declare didLoadFrom
     func didLoadFromCCB() {
         // Allow user interaction
         userInteractionEnabled = true
         
-        // Append arrays for endless scrolling
-        mountains.append(mountain1)
-        mountains.append(mountain2)
+//        // Append arrays for endless scrolling
+//        mountains.append(mountain1)
+//        mountains.append(mountain2)
         
         // Assign collision delegate class
         scrollingPhysicsNode.collisionDelegate = self
@@ -64,7 +70,54 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         for i in 0...9 {
             spawnCoin()
         }
+        
+//        // Load the first level
+//        let level1 = CCBReader.load("Levels/Level1")
+//        levelNode.addChild(level1)
+        loadLevel()
     }
+    
+    
+    // Load the proper level
+    func loadLevel() {
+        if currentLevel == 1 {
+            let level1 = CCBReader.load("Levels/Level1")
+            levelNode.addChild(level1)
+        } else if currentLevel == 2 {
+            let level2 = CCBReader.load("Levels/Level2")
+            levelNode.addChild(level2)
+        } else if currentLevel == 3 {
+            let level2 = CCBReader.load("Levels/Level3")
+            levelNode.addChild(level2)
+        } else if currentLevel == 4 {
+            let level2 = CCBReader.load("Levels/Level4")
+            levelNode.addChild(level2)
+        } else if currentLevel == 5 {
+            let level2 = CCBReader.load("Levels/Level5")
+            levelNode.addChild(level2)
+        } else if currentLevel == 6 {
+            let level2 = CCBReader.load("Levels/Level6")
+            levelNode.addChild(level2)
+        } else if currentLevel == 7 {
+            let level2 = CCBReader.load("Levels/Level7")
+            levelNode.addChild(level2)
+        } else {
+                println("this failed")
+                
+            }
+
+
+//    // Change level as score increases
+//    func changeLevel() {
+//        if scoreTotal >= 10 {
+//            currentLevel++
+//            let transitionScene = CCBReader.loadAsScene("TransitionScene")
+//            CCDirector.sharedDirector().presentScene(transitionScene)
+//            
+//        }
+//    }
+    
+    
     
     // Implement collision handler method with enemy, make restart visible
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, champion: CCNode!, gameOver: CCNode!) -> Bool {
@@ -90,8 +143,8 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
             explosion.autoRemoveOnFinish = true;
             
             // Place effect on coin location
-            explosion.position = score.position;
-            
+            explosion.position.x = score.position.x + 70
+            explosion.position.y = score.position.y
             self.addChild(explosion)
             
             // Remove coin
@@ -201,15 +254,15 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         
         
         
-        // Append mountains
-        for mountain in mountains {
-            let mountainWorldPosition = scrollingPhysicsNode.convertToWorldSpace(mountain.position)
-            let mountainScreenPosition = convertToNodeSpace(mountainWorldPosition)
-            if mountainScreenPosition.x <= (-mountain.contentSize.width) {
-                mountain.position = ccp(mountain.position.x + mountain.contentSize.width * 2, mountain.position.y)
-            }
-            
-        }
+//        // Append mountains
+//        for mountain in mountains {
+//            let mountainWorldPosition = scrollingPhysicsNode.convertToWorldSpace(mountain.position)
+//            let mountainScreenPosition = convertToNodeSpace(mountainWorldPosition)
+//            if mountainScreenPosition.x <= (-mountain.contentSize.width) {
+//                mountain.position = ccp(mountain.position.x + mountain.contentSize.width * 2, mountain.position.y)
+//            }
+//            
+//        }
         
         // Spawn endless coins
         for coin in coins.reverse() {
@@ -240,6 +293,9 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
                 spawnEnemy()
             }
         }
+        
+        // Call level change
+        changeLevel()
         
     }
 }
