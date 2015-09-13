@@ -118,8 +118,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -520,8 +518,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.10000000149011612</real>
-									<real>0.10000000149011612</real>
+									<real>0.25</real>
+									<real>0.25</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -679,7 +677,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-100</real>
+							<real>-300</real>
 						</array>
 					</dict>
 					<dict>
@@ -691,6 +689,8 @@
 						<real>0.5</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
