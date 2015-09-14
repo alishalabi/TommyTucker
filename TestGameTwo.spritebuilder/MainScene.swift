@@ -17,8 +17,9 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
 //    weak var mountain2: CCSprite!
 //    var mountains = [CCSprite]()
     
-    // Declare Doc Root Variables for restart
-    weak var restartButton : CCButton!
+    // Declare Doc Root Variables for restart and try again
+    weak var restartLevel : CCButton!
+    weak var menu : CCButton!
     var gameOver = false
     
     // Declare enemy array
@@ -198,9 +199,15 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         
     }
     
-    // Apply restart method
-    func restart() {
+    // Apply restart level method
+    func restartLvl() {
         let openingScene = CCBReader.loadAsScene("MainScene")
+        CCDirector.sharedDirector().presentScene(openingScene)
+    }
+    
+    // Apply new game method
+    func goToMenu() {
+        let openingScene = CCBReader.loadAsScene("TitleScreen")
         CCDirector.sharedDirector().presentScene(openingScene)
     }
     
@@ -208,7 +215,8 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     func endGame() {
         if (gameOver == false) {
             gameOver = true
-            restartButton.visible = true
+            restartLevel.visible = true
+            menu.visible = true
             scrollingRate = 0
             
             // Emergency termination
@@ -237,7 +245,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         
         // While touching screen, apply steady impulse to champion  (no change in x, positive change in y direction)
         if isTouching {
-            champion.physicsBody.applyImpulse(ccp(0, 50))
+            champion.physicsBody.applyImpulse(ccp(0, 250))
         }
         
         // Update scrolling node position

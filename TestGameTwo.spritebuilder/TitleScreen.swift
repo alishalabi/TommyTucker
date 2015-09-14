@@ -11,10 +11,14 @@ import Foundation
 class TitleScreen: CCNode {
     
     func newGame() {
-        LevelData.currentLevel == 1
+        LevelData.currentLevel = 1
         let mainScene = CCBReader.loadAsScene("MainScene")
         CCDirector.sharedDirector().presentScene(mainScene)
     }
     
+    func continueGame() {
+        let mainScene = CCBReader.loadAsScene("MainScene")
+        CCDirector.sharedDirector().presentScene(mainScene)
+    }
 
 }
